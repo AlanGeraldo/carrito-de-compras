@@ -1,5 +1,5 @@
 :root {
-    --header-heigth: 60px;
+    --header-height: 60px;
 
     --primary-color: hsl(354, 78%, 60%);
     --body-color: hsl(206, 4%, 97%);
@@ -44,8 +44,8 @@
     }
 }
 
-body,
-html {
+html,
+body {
     height: 100%;
 }
 
@@ -176,7 +176,7 @@ button {
 }
 
 nav {
-    height: var(--header-heigth);
+    height: var(--header-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -196,10 +196,10 @@ nav {
 @media (max-width: 768px) {
     .nav__menu {
         position: fixed;
-        bottom: var(--header-heigth);
-        left: -100%;
+        bottom: var(--header-height);
+        left: 0;
         width: 100%;
-        height: calc(max-content - var(--header-heigth));
+        height: calc(max-content - var(--header-height));
         padding: var(--space-3) 0 var(--space-2);
         background-color: var(--bg-color);
         z-index: var(--z-fixed);
@@ -220,6 +220,7 @@ nav {
     align-items: center;
 }
 
+
 .nav__link {
     display: flex;
     align-items: center;
@@ -238,7 +239,7 @@ nav {
     gap: var(--space-1);
 }
 
-.nav__btn {
+.nav__btn i {
     font-size: 1.25rem;
 }
 
@@ -270,6 +271,11 @@ nav {
 }
 
 /* Products */
+.products__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-2);
+}
 
 .products__title {
     margin-bottom: var(--space-2);
@@ -331,6 +337,7 @@ nav {
 .product__stock {
     grid-column: span 2;
     justify-self: flex-end;
+    font-size: var(--small-font);
 }
 
 .product__title {
@@ -381,14 +388,19 @@ nav {
 /* cart */
 .cart {
     position: fixed;
-    bottom: var(--header-heigth);
-    right: 0;
+    bottom: var(--header-height);
+    right: -100%;
     max-width: 375px;
     width: 100%;
-    height: calc(100vh - var(--header-heigth));
+    height: calc(100vh - var(--header-height));
     background-color: var(--bg-color);
     z-index: var(--z-fixed);
     transition: right .5s ease-in-out;
+}
+
+/* Show cart */
+.show--cart {
+    right: 0;
 }
 
 .cart__container {
@@ -415,4 +427,138 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.cart__body {
+    padding: var(--space-1);
+    overflow-y: auto;
+}
+
+.cart__empty {
+    display: flex;
+    align-items: center;
+    gap: var(--space-0-5);
+    font-size: var(--normal-font);
+}
+
+.article {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: 1fr;
+    column-gap: var(--space-1);
+    margin-bottom: var(--space-1);
+}
+
+.article__image {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border: 1px solid var(--card-color);
+    align-self: center;
+}
+
+.article__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.article__content {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 30px;
+}
+
+.article__title {
+    grid-column: span 4;
+}
+
+.article__quantity {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    justify-self: center;
+}
+
+.remove-from-cart {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-self: flex-end;
+}
+
+.cart__footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    background-color: var(--card-color);
+    padding: var(--space-1);
+    row-gap: var(--space-1);
+}
+
+
+
+.cart__count {
+    grid-column: span 2;
+    font-size: var(--small-font);
+}
+
+.cart__total {
+    grid-column: span 2;
+    justify-self: flex-end;
+}
+
+.btn--buy {
+    grid-column: span 4;
+    background-color: var(--title-color);
+    color: var(--bg-color);
+    padding: var(--space-1);
+}
+
+@media (min-width: 768px) {
+:root {
+    --header-height: 75px;
+}
+
+.header {
+    top: 0;
+    bottom: unset;
+}
+
+.nav__list {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.nav__menu
+.btn--close,
+.btn--menu {
+    display: none;
+}
+
+.main {
+    padding-top: var(--header-height);
+}
+
+.product__title {
+    font-size: var(--small-font);
+}
+
+.cart {
+    top: var(--header-height);
+}
+
+}
+
+@media (min-width: 1024px) {
+    .section--title, 
+    .container {
+        margin: 0 auto;
+    }
 }
