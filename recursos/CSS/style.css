@@ -175,7 +175,7 @@ button {
     
 }
 
-nav {
+.nav {
     height: var(--header-height);
     display: flex;
     justify-content: space-between;
@@ -196,11 +196,11 @@ nav {
 @media (max-width: 768px) {
     .nav__menu {
         position: fixed;
-        bottom: var(--header-height);
+        bottom: -100%;
         left: 0;
         width: 100%;
         height: calc(max-content - var(--header-height));
-        padding: var(--space-3) 0 var(--space-2);
+        padding: var(--space-3)  var(--space-2);
         background-color: var(--bg-color);
         z-index: var(--z-fixed);
         transition: left .5s ease-in-out;
@@ -265,9 +265,14 @@ nav {
     transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
 }
 
+.show--notify {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* Show menu */
 .show--menu {
-    left: 0;
+    bottom: var(--header-height);
 }
 
 /* Products */
@@ -533,7 +538,7 @@ nav {
 .nav__list {
     display: flex;
     align-items: center;
-    gap: .5rem;
+    gap: var(--space-1);
 }
 
 .nav__menu
