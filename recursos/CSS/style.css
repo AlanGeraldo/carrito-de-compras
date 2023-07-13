@@ -51,7 +51,7 @@ body {
 
 body.dark {
     background-color: #222;
-    color:#f2f2f2;
+    color:#666;
 }
 
 body.dark .container {
